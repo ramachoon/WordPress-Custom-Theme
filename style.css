@@ -1,4 +1,15 @@
 /*
+Every wordpress site needs to include a style.css and an index.html in the root directory.
+Your this style.css is a bit different than our normal styles.
+This one has the configurations for our actual theme.
+You have to include all of the stuff which is listed bellow as a commen
+at the beginning of the file.
+All of it must be unique to your new theme as you don't want it to reference
+someone else's theme
+If you want a screenshot on your theme, include an image with the name screenshot.png in the root directory
+
+
+
 Theme Name: 18WDWU02 Custom Theme
 Author: Richard Hpa
 Description: A custom theme built in Yoobee School of Design's Web and UX Design Course.
@@ -8,6 +19,4 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: custom, yoobee, bootstrap, slider, carousel
 Text Domain: 18wdwu02customtheme
 
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
 */
