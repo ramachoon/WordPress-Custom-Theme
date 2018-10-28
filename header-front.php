@@ -15,6 +15,20 @@
         		<span class="navbar-toggler-icon"></span>
         	</button>
         	<a class="navbar-brand" href="#">Navbar</a>
+                <!--
+                    Once a menu has been registered in functions.php all we need to do is
+                    tell it where to do.
+                    The wp_nav_menu() function needs an array of values.
+                    The only only value it absolutly needs is the theme_location value, which should
+                    match up with the name of the registered menu.
+
+                    You need to be careful with styling a menu because by default, all the ID's and classes
+                    for the menu come from the name the user gives it, and we cant control what they name it
+                    so adding in extra parameters like menu_id and styling that will make sure
+                    that the menu looks exactly as it should no mater what the user names it.
+
+                    https://developer.wordpress.org/reference/functions/wp_nav_menu/
+                -->
         		<?php
         		wp_nav_menu( array(
         			'theme_location'    => 'header_nav',

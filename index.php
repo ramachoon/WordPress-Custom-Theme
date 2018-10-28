@@ -1,3 +1,9 @@
+<!--
+    the get_header() function looks for header.php inside your theme folder.
+    Giving a value inside the function would then look for a different header
+    get_header('front') would then look for header-front.php
+    https://codex.wordpress.org/Function_Reference/get_header
+ -->
 <?php get_header(); ?>
 
         <div class="container">
@@ -30,4 +36,10 @@
             <?php endif; ?>
         </div>
 
+<!--
+    the get_footer() function looks for footer.php inside your theme folder
+    just like the header, adding a value in the function would then look for a different
+    footer file
+    https://developer.wordpress.org/reference/functions/get_footer/
+ -->
 <?php get_footer(); ?>
