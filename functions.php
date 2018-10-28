@@ -35,3 +35,19 @@ add_theme_support( 'post-thumbnails' );
     So any images uploaded to site before we add the new image size won't be able to use this image size
 */
 add_image_size('icon', 50, 50, true);
+
+
+// function register_my_menu() {
+//   register_nav_menu('header-menu',__( 'Header Menu' ));
+// }
+// add_action( 'init', 'register_my_menu' );
+
+function addCustomMenus(){
+    add_theme_support('menus');
+    register_nav_menu('header_nav', 'This is the navigation which appears at the top of the page');
+    register_nav_menu('footer_nav', 'This is the navigation which appears at the bottom of the page');
+}
+add_action('init', 'addCustomMenus');
+
+// Register Custom Navigation Walker
+require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
