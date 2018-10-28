@@ -6,15 +6,14 @@
         <?php wp_head(); ?>
     </head>
     <body>
-        <h3>This is coming from header-front.php</h3>
-        <p>This will only be used on the front page</p>
+        <!-- <h3>This is coming from header-front.php</h3> -->
+        <!-- <p>This will only be used on the front page</p> -->
 
         <nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
           <div class="container">
         	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
         		<span class="navbar-toggler-icon"></span>
         	</button>
-        	<a class="navbar-brand" href="#">Navbar</a>
                 <!--
                     Once a menu has been registered in functions.php all we need to do is
                     tell it where to do.
@@ -34,12 +33,15 @@
         			'theme_location'    => 'header_nav',
         			'depth'             => 2,
         			'container'         => 'div',
-        			'container_class'   => 'collapse navbar-collapse',
+        			'container_class'   => 'collapse navbar-collapse ',
         			'container_id'      => 'bs-example-navbar-collapse-1',
-        			'menu_class'        => 'nav navbar-nav',
+        			'menu_class'        => 'nav navbar-nav justify-content-around w-100',
         			'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
         			'walker'            => new WP_Bootstrap_Navwalker(),
         		) );
         		?>
         	</div>
         </nav>
+        <div id="front-page-banner" class="bg-dark">
+
+        </div>
