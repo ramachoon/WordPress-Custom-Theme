@@ -4,7 +4,10 @@
     to a static page through the customize section and the home page settings tab.
 -->
 
-
+<!--
+    get_header('front') would then look for header-front.php rather than header.php
+    https://codex.wordpress.org/Function_Reference/get_header
+ -->
 <?php get_header('front'); ?>
 
         <div class="container">
