@@ -4,9 +4,6 @@
     It will be different on every theme you create.
 */
 
-
-
-
 /*
     What we are doing bellow is adding our bootstrap styles into our theme.
     We can't do it the normal way which we have done in the past, but rather add it into the wp_head or wp_footer sections
@@ -84,3 +81,6 @@ add_action('init', 'addCustomMenus');
 
 */
 require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+
+
+add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' , 'link') );
