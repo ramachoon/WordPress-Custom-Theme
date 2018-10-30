@@ -82,5 +82,19 @@ add_action('init', 'addCustomMenus');
 */
 require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 
+/*
+    Post formats are a way to customize the look of a post depending on what content
+    it should have. Adding the theme support will show the post formats panel on the
+    posts pages. There is a list of post formats available in the codex. You need to
+    specify which of the post formats you want to include in your site.
+    From that we can create files which render out the content differently.
 
+    Files to look at:
+        - front-page.php
+        - content.php
+        - content-*.php
+        - single.php
+
+    https://codex.wordpress.org/Post_Formats
+*/
 add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' , 'link') );

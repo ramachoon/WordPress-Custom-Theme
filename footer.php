@@ -1,5 +1,5 @@
         <!-- <h3>This is coming from the footer</h3> -->
-        <footer class="py-5 bg-light">
+        <footer class="mt-5 py-5 bg-light">
             <div class="container">
                 <div class="row">
                     <?php
