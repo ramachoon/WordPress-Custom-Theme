@@ -33,3 +33,7 @@ body{
 .twoColumns{
     column-count: 2;
 }
+
+iframe {
+    max-width: 100%;
+}
