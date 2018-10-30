@@ -19,20 +19,19 @@
             <div class="row">
                 <?php if(have_posts()): ?>
                     <div class="col">
+                        <div class="card-columns">
+                            <?php while(have_posts()): the_post();?>
+                                <!--
+                                    What we are going to do is render out a different card
+                                    depending on what post format our post is.
+                                    What it is going to look for is a file called content-{postformat}.php.
+                                    If it cant't find that file, it will look for content.php.
+                                    It will then paste the contents of that file into this location.
+                                -->
+                                <?php get_template_part('content', get_post_format()); ?>
 
-
-                    <div class="card-columns">
-                        <?php while(have_posts()): the_post();?>
-
-
-
-                            <?php get_template_part('content', get_post_format()); ?>
-
-
-
-
-                        <?php endwhile; ?>
-                    </div>
+                            <?php endwhile; ?>
+                        </div>
                     </div>
                 <?php endif; ?>
 
