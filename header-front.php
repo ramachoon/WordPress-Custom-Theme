@@ -42,6 +42,19 @@
         		?>
         	</div>
         </nav>
+        <?php
+           $custom_logo = get_theme_mod('custom_logo');
+           $logo_url = wp_get_attachment_image_url($custom_logo, 'medium');
+         ?>
+        <nav class="navbar navbar-light bg-light justify-content-center">
+            <?php if($custom_logo): ?>
+                <a class="navbar-brand" href="#">
+                 <img src="<?= $logo_url  ?>" height="50" alt="">
+               </a>
+            <?php else: ?>
+                <a class="navbar-brand" href="#"><?= bloginfo('name');  ?></a>
+            <?php endif; ?>
+        </nav>
         <div id="front-page-banner" class="bg-dark">
 
         </div>

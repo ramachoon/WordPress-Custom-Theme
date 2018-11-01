@@ -12,7 +12,20 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Navbar</a>
+
+
+            <?php
+               $custom_logo = get_theme_mod('custom_logo');
+               $logo_url = wp_get_attachment_image_url($custom_logo, 'medium');
+             ?>
+             <?php if($custom_logo): ?>
+                 <a class="navbar-brand" href="#">
+                  <img src="<?= $logo_url  ?>" height="50" alt="">
+                </a>
+             <?php else: ?>
+                 <a class="navbar-brand" href="#"><?= bloginfo('name');  ?></a>
+             <?php endif; ?>
+
                 <?php
                 wp_nav_menu( array(
                     'theme_location'    => 'header_nav',
