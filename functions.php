@@ -131,7 +131,26 @@ function addCustomLogo(){
 add_action('init', 'addCustomLogo');
 
 
+/*
+    Sidebars are extra areas on your pages which users can add default wordpress
+    widgets onto. Even though they are called sidebars they don't need to be
+    on the side of pages. Techinally they could go anywhere on the site.
 
+    Just like usual we have to turn on this functionality on our theme to be able to
+    access the widgets section.
+
+    First thing you need to do is register a sidebar.
+    The register_sidebar() is for registering just 1 sidebar. If you want to add multiple
+    you could either write the function twice, or use the register_sidebars() function.
+
+    There is a range of parameters which you can give it and they will all use a default
+    if you don't specify them. The main one we should be aware of is the id. Each sidebar
+    needs a unique identifier for when we call it on the page.
+
+    To see where the sidebar goes, look at front-page.php
+
+    https://codex.wordpress.org/Sidebars
+*/
 
 function register_my_sidebars(){
 
@@ -145,6 +164,6 @@ function register_my_sidebars(){
         'after_title' => '</h3>'
     ));
 
-
 }
+
 add_action('widgets_init', 'register_my_sidebars');
