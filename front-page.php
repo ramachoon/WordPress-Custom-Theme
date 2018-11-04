@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="row">
-                <?php if(have_posts()): ?>
-                    <div class="col">
+                <div class="col">
+                    <?php if(have_posts()): ?>
                         <div class="card-columns">
                             <?php while(have_posts()): the_post();?>
                                 <!--
@@ -32,9 +32,15 @@
 
                             <?php endwhile; ?>
                         </div>
+                    <?php endif; ?>
+                </div>
+                <?php if( is_active_sidebar('front_page_sidebar') ): ?>
+                    <div class="col-4">
+                        <div id="frontSidebar">
+                            <?php dynamic_sidebar('front_page_sidebar'); ?>
+                        </div>
                     </div>
                 <?php endif; ?>
-
             </div>
         </div>
 <?php get_footer(); ?>
