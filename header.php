@@ -19,11 +19,11 @@
                $logo_url = wp_get_attachment_image_url($custom_logo, 'medium');
              ?>
              <?php if($custom_logo): ?>
-                 <a class="navbar-brand" href="#">
+                 <a class="navbar-brand" href="<?= bloginfo('home');?>">
                   <img src="<?= $logo_url  ?>" height="50" alt="">
                 </a>
              <?php else: ?>
-                 <a class="navbar-brand" href="#"><?= bloginfo('name');  ?></a>
+                 <a class="navbar-brand" href="<?= bloginfo('home');?>"><?= bloginfo('name');  ?></a>
              <?php endif; ?>
 
                 <?php

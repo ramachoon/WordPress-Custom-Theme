@@ -99,8 +99,27 @@ require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 */
 add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' , 'link') );
 
+/*
+    Because our functions.php file is getting long I am spliting my page up into
+    different files. What is now going to happen is that whenever we want to add
+    a new custom post type. We will write it all in the custom_post_types.php file.
+*/
 require get_parent_theme_file_path('./addons/custom_post_types.php');
 
+
+/*
+    The add_theme_support('custom-logo') function gives us the ability to add in a
+    custom logo for our website.
+    This will show a add Logo option in the Site Identity panel of the customizer.
+
+    The options in the array aren't required but give us more functionality to the uploading image.
+    The width and the height give the aspect ratio of the image. Ideally we want to be able to
+    crop it to the right dimentions for our theme.
+    Flex width and height allow the user to move the cropping area to whatever they want.
+    If it is false, then it would stick within the aspect ratio given.
+
+    https://developer.wordpress.org/themes/functionality/custom-logo/
+*/
 function addCustomLogo(){
     add_theme_support('custom-logo', array(
         'height' => 100,
@@ -110,3 +129,22 @@ function addCustomLogo(){
     ));
 }
 add_action('init', 'addCustomLogo');
+
+
+
+
+function register_my_sidebars(){
+
+    register_sidebar(array(
+        'id' => 'front_page_sidebar',
+        'name' => 'Front Page Sidebar',
+        'description' => 'The sidebar which appears on the front page',
+        'before_widget' => '<div id="%1$s" class="widget customWidget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widgetTitle">',
+        'after_title' => '</h3>'
+    ));
+
+
+}
+add_action('widgets_init', 'register_my_sidebars');
