@@ -15,7 +15,7 @@
         </div>
         <div class="row mt-3">
             <div class="col">
-                <div>
+                <div class="wp_content">
                     <?php the_content(); ?>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<!-- 
+<!--
     This file will only render if the post format is video
 
     Look at content.php & functions.php for more info about post formats
@@ -15,7 +15,7 @@
         </div>
         <div class="row mt-3">
             <div class="col">
-                <div class="single-video-content">
+                <div class="single-video-content wp_content">
                     <?php the_content(); ?>
                 </div>
             </div>

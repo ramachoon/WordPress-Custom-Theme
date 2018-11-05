@@ -19,7 +19,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div>
+                        <div class="wp_content">
                             <?php the_content(); ?>
                         </div>
                     </div>
