@@ -29,7 +29,7 @@
                                 We have to remember that the content can be html so we want
                                 to make sure we put it inside a div or a span rather than specific elements like p and h's
                             -->
-                            <div><?php the_content(); ?></div>
+                            <div class="wp_content"><?php the_content(); ?></div>
                         </div>
                     </div>
                 <?php endwhile; ?>

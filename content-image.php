@@ -20,7 +20,7 @@
                 <?php endif; ?>
             </div>
             <div class="col-xs-12 col-md-8">
-                <div>
+                <div class="wp_content">
                     <?php the_content(); ?>
                 </div>
             </div>

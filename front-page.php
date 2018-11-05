@@ -41,13 +41,13 @@
                     and if there aren't any widgets, then the design still needs to look good.
 
                     In our theme. If there are widgets inside the front_page_sidebar then we want our theme
-                    to use 8 and 4 columns. Otherwise we want the main posts to take up the whole 12.
+                    to use 9 and 3 columns. Otherwise we want the main posts to take up the whole 12.
 
                     is_active_sidebar() needs the ID of the registered sidebar. So this must match
                     what you wrote in functions.php
                 -->
                 <?php if( is_active_sidebar('front_page_sidebar') ): ?>
-                    <div class="col-4">
+                    <div class="col-3">
                         <div id="frontSidebar">
                             <!--
                                 To get the sidebar to actually show all the widgets, then say dynamic_sidebar(id)
@@ -55,6 +55,11 @@
 
                                 By default they will be echoed out as li's but if you change the befores and afters then
                                 it would use those instead.
+
+                                The widgets will use default styles so they won't look good by default.
+                                If you are allowing widgets, you will have to style them yourself in your css.
+                                There is a way on only allowing specific widgets on your site which also might be useful
+                                if you don't want to style every single widget.
                             -->
                             <?php dynamic_sidebar('front_page_sidebar'); ?>
                         </div>

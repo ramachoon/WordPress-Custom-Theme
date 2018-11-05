@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col">
                     <h1><?php the_title(); ?></h1>
-                    <div>
+                    <div class="wp_content">
                         <?php the_content(); ?>
                     </div>
                 </div>

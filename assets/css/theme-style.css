@@ -42,3 +42,77 @@ iframe {
     width: 100%;
     height: 400px;
 }
+
+#frontSidebar #wp-calendar{
+    width: 100%;
+}
+
+#frontSidebar #wp-calendar thead{
+    border-bottom: 1px solid black;
+}
+
+#frontSidebar #wp-calendar #today{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#frontSidebar #searchform input[type="text"]{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-bottom: 1em;
+}
+
+#front-page-banner{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.wp_content div{
+    max-width: 100%;
+}
+
+.wp_content img{
+    max-width: 100%;
+    height: auto;
+}
+
+.wp_content img.alignright {
+    float: right;
+    margin: 0 0 1em 1em;
+}
+
+.wp_content img.alignleft {
+    float: left;
+    margin: 0 1em 1em 0;
+}
+
+.wp_content img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp_content .alignright {
+    float: right;
+}
+
+.wp_content .alignleft {
+    float: left;
+}
+
+.wp_content .aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -5,7 +5,7 @@
         <title></title>
         <?php wp_head(); ?>
     </head>
-    <body>
+    <body <?php body_class(); ?>>
         <!-- <h3>This is coming from header-front.php</h3> -->
         <!-- <p>This will only be used on the front page</p> -->
         <?php
@@ -54,6 +54,17 @@
         		?>
         	</div>
         </nav>
-        <div id="front-page-banner" class="bg-dark">
 
-        </div>
+        <?php
+            if(get_header_image() == false){
+                $bannerImage = get_template_directory_uri() . '/assets/images/default.jpeg';
+            } else {
+                $bannerImage = get_header_image();
+            }
+         ?>
+
+        <?php if(get_header_image()): ?>
+            <div id="front-page-banner" class="bg-dark" style="background-image: url(<?= $bannerImage; ?>);">
+
+            </div>
+        <?php endif; ?>
