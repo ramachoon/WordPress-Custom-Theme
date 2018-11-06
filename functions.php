@@ -190,6 +190,11 @@ require_once get_template_directory() . '/addons/class-wp-bootstrap-navwalker.ph
     a new custom post type. We will write it all in the custom_post_types.php file.
 */
 require get_parent_theme_file_path('./addons/custom_post_types.php');
+
+/*
+    Just like before, we are going to seperate out customizer sections into another file
+    so our functions.php is easier to read.
+*/
 require get_parent_theme_file_path('./addons/custom_customizer.php');
 
 /*
