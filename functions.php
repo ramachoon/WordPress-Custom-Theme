@@ -190,6 +190,7 @@ require_once get_template_directory() . '/addons/class-wp-bootstrap-navwalker.ph
     a new custom post type. We will write it all in the custom_post_types.php file.
 */
 require get_parent_theme_file_path('./addons/custom_post_types.php');
+require get_parent_theme_file_path('./addons/custom_customizer.php');
 
 /*
     Sidebars are extra areas on your pages which users can add default wordpress
