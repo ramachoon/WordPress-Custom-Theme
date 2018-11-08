@@ -34,6 +34,22 @@
                              <?php endif; ?>
                            <div class="card-body">
                              <h5 class="card-title"><?php the_title(); ?></h5>
+
+
+
+                             <?php
+                                $id = get_the_id();
+                                $staffRole = get_post_meta($id, 'staffRole', true);
+                             ?>
+
+                             <?php if($staffRole): ?>
+                                 <p><?= $staffRole; ?></p>
+                            <?php endif; ?>
+
+
+
+
+
                            </div>
                          </div>
                      <?php endwhile; ?>
