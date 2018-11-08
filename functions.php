@@ -26,6 +26,13 @@ function addCustomThemeStyles(){
 add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 
 
+
+function add_admin_custom_styles(){
+    wp_enqueue_style('admin-style', get_template_directory_uri() . '/assets/css/admin.css', array(), '0.0.1', 'all');
+}
+add_action('admin_enqueue_scripts', 'add_admin_custom_styles');
+
+
 /*
     Beacuse we are adding multiple functions into the init queue.
     I have now moved them all of our add_theme_support() functions into one
