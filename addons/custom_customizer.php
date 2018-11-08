@@ -124,7 +124,8 @@ function custom_theme_customizer( $wp_customize ){
             array(
                 'label' => __('Footer Text', '18wdwu02customtheme'),
                 'section' => 'custom_theme_footer_section',
-                'settings' => 'footer_text_setting'
+                'settings' => 'footer_text_setting',
+                'type' => 'text'
             )
         )
     );

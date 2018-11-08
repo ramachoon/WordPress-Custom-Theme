@@ -5,9 +5,9 @@
         <title></title>
         <?php wp_head(); ?>
     </head>
-    <body>
+    <body <?php body_class(); ?>>
         <!-- <h3>This is coming from header.php</h3> -->
-        <nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
+        <nav class="navbar navbar-expand-md navbar-light header-bg" role="navigation">
           <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
