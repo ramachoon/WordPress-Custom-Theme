@@ -198,6 +198,12 @@ require get_parent_theme_file_path('./addons/custom_post_types.php');
 require get_parent_theme_file_path('./addons/custom_customizer.php');
 
 /*
+    Just like before, we are going to seperate out our custom fields sections into another file
+    so our functions.php is easier to read.
+*/
+require get_parent_theme_file_path('./addons/custom_fields.php');
+
+/*
     Sidebars are extra areas on your pages which users can add default wordpress
     widgets onto. Even though they are called sidebars they don't need to be
     on the side of pages. Techinally they could go anywhere on the site.
