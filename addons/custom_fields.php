@@ -33,6 +33,33 @@ function add_custom_fields(){
 }
 add_action('admin_init', 'add_custom_fields');
 
-function show_metaboxes($post){
+function show_metaboxes($post, $args){
+    global $metaboxes;
 
+    $fields = $metaboxes[$args['id']]['fields'];
+
+
+    if(! empty($fields)){
+        foreach ($fields as $id => $field) {
+            switch($field['type']){
+                case 'text':
+                    $output .= '<label for="'.$id.'">'.$field['title'].'</label>';
+                    $output .= '<input type="text" name="'.$id.'" class="" style="width:100%">';
+                break;
+                case 'number':
+                    $output .= '<label for="'.$id.'">'.$field['title'].'</label>';
+                    $output .= '<input type="number" name="'.$id.'" style="width:100%">';
+                break;
+                case 'select':
+                    $output .= '<label>'.$field['title'].'</label>';
+                    $output .= '<select></select>';
+                break;
+                default:
+                    $output .= '<label>'.$field['title'].'</label>';
+                    $output .= '<input type="text" name="'.$id.'">';
+                break;
+            }
+        }
+    }
+    echo $output;
 }
