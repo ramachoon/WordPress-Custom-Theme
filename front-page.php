@@ -8,21 +8,44 @@
     get_header('front') would then look for header-front.php rather than header.php
     https://codex.wordpress.org/Function_Reference/get_header
  -->
-<?php get_header('front'); ?>
+<?php
+get_header('front');
+
+
+?>
 
         <div class="container">
             <div class="row mb-5 mt-5">
                 <div class="card-deck">
-                    <div class="card col-6">
-                        <h3>Post Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <button type="button" name="button">Go to Post</button>
-                    </div>
-                    <div class="card col-6">
-                        <h3>Post Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <button type="button" name="button">Go to Post</button>
-                    </div>
+                    <?php for ($i=1; $i <= 2 ; $i++): ?>
+                        <?php $featuredPostID = get_theme_mod('featured_post_'.$i.'_setting'); ?>
+                        <?php if($featuredPostID): ?>
+
+                            <?php
+                                $args = array(
+                                    'p' => $featuredPostID
+                                );
+                                $featuredPost = new WP_Query($args);
+                             ?>
+
+                             <?php if( $featuredPost->have_posts() ): ?>
+                                 <?php while($featuredPost->have_posts()): $featuredPost->the_post();?>
+                                     <div class="card col-6">
+                                         <h3><?php the_title(); ?></h3>
+                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                         <button type="button" name="button">Go to Post</button>
+                                     </div>
+                                 <?php endwhile; ?>
+                             <?php endif; ?>
+
+                        <?php endif; ?>
+                    <?php endfor; ?>
+
+
+
+
+
+
                 </div>
 
             </div>
