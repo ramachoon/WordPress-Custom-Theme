@@ -140,7 +140,17 @@ function custom_theme_customizer( $wp_customize ){
         'description' => 'This panel will hold the featured pages sections'
     ));
 
+    $args = array(
+        'numberposts' => -1
+    );
 
+    $allPosts = get_posts($args);
+
+    $options = array();
+    foreach ($allPosts as $singlePost) {
+        $options[$singlePost->ID] = $singlePost->post_title;
+    }
+    $options[''] ='';
 
     for ($i=1; $i <= 2 ; $i++) {
 
@@ -164,11 +174,7 @@ function custom_theme_customizer( $wp_customize ){
                     'section' => 'featured_post_'.$i,
                     'settings' => 'featured_post_'.$i.'_setting',
                     'type' => 'select',
-                    'choices' => array(
-                        'value1' => 'Value 1',
-                        'value2' => 'Value 2',
-                        'value3' => 'Value 3',
-                    )
+                    'choices' => $options
                 )
             )
         );
