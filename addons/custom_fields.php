@@ -9,11 +9,13 @@ $metaboxes = array(
         'fields' => array(
             'staffRole' => array(
                 'title' => 'Staff Members Role',
-                'type' => 'text'
+                'type' => 'text',
+                'description' => 'this is the descriptioasdfdsafasfdn'
             ),
             'yearStarted' => array(
                 'title' => 'Year Staff Member Started',
-                'type' => 'number'
+                'type' => 'number',
+                'description' => 'this is the description'
             )
         )
     )
@@ -50,6 +52,7 @@ function show_metaboxes($post, $args){
             switch($field['type']){
                 case 'text':
                     $output .= '<label for="'.$id.'" class="customLabel">'.$field['title'].'</label>';
+                    $output .= '<p>'.$field['description'].'</p>';
                     $output .= '<input type="text" name="'.$id.'" class="customField" value="'.$customValues[$id][0].'">';
                 break;
                 case 'number':
