@@ -77,3 +77,35 @@ add_action('init', 'add_staff_post_type');
 /*
     Look on staff.template.php to see us call this custom post type
 */
+
+
+
+function add_enquiries_post_type(){
+    $labels = array(
+        'name' => _x('Enquiries', 'post type name', '18wdwu02customtheme'),
+        'singular_name' => _x('Enquiry', 'post types singluar name', '18wdwu02customtheme'),
+        'add_new_item' => _x('Add New Enquiry', 'adding new enquiry', '18wdwu02customtheme')
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'description' => 'Enquiries that come through our website',
+        'public' => false,
+        'hierarchical' => true,
+        'exclude_from_search' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 20,
+        'menu_icon' => 'dashicons-megaphone',
+        'supports' => array(
+            'title',
+            'editor'
+        ),
+        'query_var' => true
+    );
+
+    register_post_type('enquiries', $args);
+}
+
+add_action('init', 'add_enquiries_post_type');

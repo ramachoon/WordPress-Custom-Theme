@@ -18,6 +18,25 @@ $metaboxes = array(
                 'description' => 'this is the description'
             )
         )
+    ),
+    'enquiries' => array(
+        'title' => 'Enquiries',
+        'applicableto' => 'enquiries',
+        'location' => 'normal',
+        'priority' => 'high',
+        'fields' => array(
+            'email' => array(
+                'title' => 'Email Address',
+                'type' => 'email',
+                'description' => 'The persons email address'
+            ),
+            'courseInterest' => array(
+                'title' => 'Course Interested In',
+                'type' => 'select',
+                'description' => 'Course Interseted in',
+                'options' => array('Course1', 'Course2', 'Course3')
+            )
+        )
     )
  );
 
@@ -43,8 +62,6 @@ function show_metaboxes($post, $args){
 
     $customValues = get_post_custom($post->ID);
 
-
-
     $output = '<input type="hidden" name="post_format_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'">';
 
     if(! empty($fields)){
@@ -60,8 +77,17 @@ function show_metaboxes($post, $args){
                     $output .= '<input type="number" name="'.$id.'" class="customField" value="'.$customValues[$id][0].'">';
                 break;
                 case 'select':
+                    $output .= '<label class="customLabel">'.$field['title'].'</label><br>';
+                    $output .= '<select name="'.$id.'"><option>Choose an Option</option>';
+                    $options = $field['options'];
+                    foreach ($options as $option) {
+                        $output .= '<option value="'.$option.'">'.$option.'</option>';
+                    }
+                    $output .= '</select>';
+                break;
+                case 'email':
                     $output .= '<label class="customLabel">'.$field['title'].'</label>';
-                    $output .= '<select></select>';
+                    $output .= '<input type="email" name="'.$id.'" class="customField" value="'.$customValues[$id][0].'">';
                 break;
                 default:
                     $output .= '<label class="customLabel">'.$field['title'].'</label>';
