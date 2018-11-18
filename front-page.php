@@ -72,7 +72,16 @@ get_header('front');
                         </div>
                     <?php endif; ?>
                 </div>
-
+                <?php
+                    $total = wp_count_posts()->publish;
+                    $canShow = get_option('posts_per_page');
+                 ?>
+                <?php if($total > $canShow): ?>
+                    <div class="col-12">
+                        <hr>
+                        <button type="button" name="button" class="btn btn-primary btn-block show-more">Show More</button>
+                    </div>
+                <?php endif; ?>
                 <!--
                     Our users don't actually need to include widgets on the theme.
                     So we need to make sure we wrap it is around an if statement
