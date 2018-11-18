@@ -5,30 +5,53 @@
 
 if($_POST){
     var_dump($_POST);
-
     $errors = array();
 
     if(!wp_verify_nonce($_POST['_wpnonce'], 'wp_enquiery_form')){
-        echo "cant save the data, sorry";
-        return;
-    }
+        array_push($errors, 'Sorry something went wrong with processing this form, Please try again');
+    } else {
 
-    //validation
+        if(!$_POST['enquiriesName']){
+            array_push($errors, "Your name is required, please enter a value");
+        } else if(strlen($title) < 2){
+            array_push($errors, "Please enter at least 2 characters for your Name");
+        }
 
-    if(empty($errors)){
+        $content = $_POST['enquiriesMessage'];
+        if(!$_POST['enquiriesMessage']){
+            array_push($errors, "A message is required, please enter a value");
+        } else if(strlen($_POST['enquiriesMessage']) < 10){
+            array_push($errors, "Please enter at least 10 characters for your Message");
+        }
 
-        $args = array(
-            'post_title' => $_POST['enquiriesName'],
-            'post_content' => $_POST['enquiriesMessage'],
-            'post_type' => 'enquiries',
-            'meta_input' => array(
-                'email' => $_POST['enquiriesEmail'],
-                'courseInterest' => $_POST['enquiriesCourseInterest']
-            )
-        );
+        if(!$_POST['enquiriesEmail']){
+            array_push($errors, "An Email is required, please enter a value");
+        } else if(!filter_var($_POST['enquiriesEmail'], FILTER_VALIDATE_EMAIL)){
+            array_push($errors, "Please enter a valid email address");
+        }
 
-        wp_insert_post($args);
-        echo "Your Enquiry has been sent";
+        if(!$_POST['enquiriesCourseInterest']){
+            array_push($errors, "Please select a Course you are intereted in.");
+        } else if($_POST['enquiriesCourseInterest'] === ''){
+            array_push($errors, "Please select a Course you are intereted in.");
+        }
+
+
+        if(empty($errors)){
+
+            $args = array(
+                'post_title' => $_POST['enquiriesName'],
+                'post_content' => $_POST['enquiriesMessage'],
+                'post_type' => 'enquiries',
+                'meta_input' => array(
+                    'email' => $_POST['enquiriesEmail'],
+                    'courseInterest' => $_POST['enquiriesCourseInterest']
+                )
+            );
+
+            wp_insert_post($args);
+            echo "Your Enquiry has been sent";
+        }
     }
 }
 
@@ -55,6 +78,20 @@ if($_POST){
                     </div>
                 </div>
             </div>
+
+            <?php if($_POST && !empty($errors)): ?>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="alert alert-danger pb-0" role="alert">
+                            <ul>
+                                <?php foreach($errors as $singleError): ?>
+                                    <li><?= $singleError; ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
 
             <div class="row">
                 <div class="col">
