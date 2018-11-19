@@ -257,8 +257,6 @@ function register_my_sidebars(){
 }
 add_action('widgets_init', 'register_my_sidebars');
 
-
-
 function ajax_load_more_posts_on_front_page(){
 
     $args = json_decode( stripslashes($_POST['query']), true );
@@ -273,9 +271,6 @@ function ajax_load_more_posts_on_front_page(){
         endwhile;
     endif;
     die;
-
-
-
 }
 add_action('wp_ajax_loadmore', 'ajax_load_more_posts_on_front_page');
 add_action('wp_ajax_nopriv_loadmore', 'ajax_load_more_posts_on_front_page');

@@ -33,7 +33,7 @@ get_header('front');
                                      <div class="card col-6">
                                          <h3><?php the_title(); ?></h3>
                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                         <button type="button" name="button">Go to Post</button>
+                                         <button type="button" name="button" class="btn btn-secondary mb-2">Go to Post</button>
                                      </div>
                                  <?php endwhile; ?>
                              <?php endif; ?>
@@ -79,6 +79,23 @@ get_header('front');
                 <?php if($total > $canShow): ?>
                     <div class="col-12">
                         <hr>
+                        <?php
+                            $paginate_args = array(
+                                'type' => 'array'
+                            );
+                            $all_pages = paginate_links($paginate_args);
+                         ?>
+                         <nav>
+                             <ul class="pagination">
+                                 <?php foreach($all_pages as $page): ?>
+                                     <li class="page-item">
+                                         <?php echo str_replace('page-numbers', 'page-link', $page); ?>
+                                     </li>
+                                 <?php endforeach; ?>
+                             </ul>
+                         </nav>
+
+
                         <button type="button" name="button" class="btn btn-primary btn-block show-more">Show More</button>
                     </div>
                 <?php endif; ?>
