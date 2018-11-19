@@ -50,11 +50,23 @@
                     <?php
                         $comments = get_comments(array(
                             'post_id' => get_the_ID(),
-                            'status' => 'approve'
+                            'status' => 'approve',
                         ));
-                        wp_list_comments('', $comments );
-
+                        
+                        $comments_args = array(
+                            'style'       => 'ol',
+                            'format'      => 'html5',
+                            'short_ping'  => true,
+                            'walker' => new WPSE_Walker_Comment
+                        );
+                        $comments_count = wp_count_comments(get_the_ID());
                     ?>
+                    <?php if($comments_count->approved > 0): ?>
+                        <div id="comments-list">
+                            <h3>Comments<small><span class="float-right"><?php echo $comments_count->approved ?> Comments</span></small></h3>
+                            <?php wp_list_comments($comments_args, $comments ); ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
