@@ -202,6 +202,7 @@ add_image_size('icon', 50, 50, true);
 
 */
 require_once get_template_directory() . '/addons/class-wp-bootstrap-navwalker.php';
+require_once get_template_directory() . '/addons/class-wp-comments-walker.php';
 
 /*
     Because our functions.php file is getting long I am spliting my page up into
