@@ -22,7 +22,8 @@
                     $args = array(
                         'post_type' => 'staff',
                         'order' => 'ASC',
-                        'orderby' => 'title'
+                        'orderby' => 'title',
+                        'posts_per_page' => -1
                     );
                     $allStaffMembers = new WP_Query($args);
                  ?>
