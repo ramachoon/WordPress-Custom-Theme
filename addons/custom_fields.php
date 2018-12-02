@@ -1,5 +1,21 @@
 <?php
 
+/*
+    These scripts are only needed if you are using a field type with image.
+    What this is doing is saving the ID of the image in the database.
+    When viewing it you need to use the wp_get_attachment_image_url(id, size, icon) function to get the url of the image
+    wp_get_attachment_image_url( int $attachment_id, string|array $size = 'thumbnail', bool $icon = false )
+    https://developer.wordpress.org/reference/functions/wp_get_attachment_image_url/
+
+*/
+function admin_my_enqueue() {
+    wp_enqueue_style('CustomFieldStyle', get_template_directory_uri() . '/assets/css/customFields.css', array(), '1.0.0', 'all');
+    wp_enqueue_script('CustomFieldScript', get_template_directory_uri() . '/assets/js/customFields.js', array(), '1.0.0', true);
+}
+add_action('admin_enqueue_scripts', 'admin_my_enqueue');
+
+
+
 $metaboxes = array(
     'staff' => array(
         'title' => 'Staff Info',
@@ -37,7 +53,62 @@ $metaboxes = array(
                 'options' => array('Course1', 'Course2', 'Course3')
             )
         )
-    )
+    ),
+    'video_info' => array(
+        'title' => 'Video Information',
+        'applicableto' => 'post',
+        'format_condition' => 'post-format-video',
+        'location' => 'normal',
+        'priority' => 'high',
+        'fields' => array(
+            'video_url' => array(
+                'title' => 'Video URL',
+                'type' => 'text',
+                'description' => 'Please enter a url to the video'
+            )
+        )
+    ),
+    'image_info' => array(
+        'title' => 'Image Information',
+        'applicableto' => 'post',
+        'format_condition' => 'post-format-image',
+        'location' => 'normal',
+        'priority' => 'high',
+        'fields' => array(
+            'video_url' => array(
+                'title' => 'Secondary Image',
+                'type' => 'image',
+                'description' => 'Please upload a seconday Image'
+            )
+        )
+    ),
+    'audio_info' => array(
+        'title' => 'Audio Information',
+        'applicableto' => 'post',
+        'format_condition' => 'post-format-audio',
+        'location' => 'normal',
+        'priority' => 'high',
+        'fields' => array(
+            'audio_url' => array(
+                'title' => 'Audio URL',
+                'type' => 'text',
+                'description' => 'Please enter a url to the audio'
+            )
+        )
+    ),
+    'any_info' => array(
+        'title' => 'Any Information',
+        'applicableto' => 'post',
+        'location' => 'normal',
+        'priority' => 'high',
+        'fields' => array(
+            'audio_url' => array(
+                'title' => 'Any URL',
+                'type' => 'text',
+                'description' => 'Field which will appear for all posts types'
+            )
+        )
+    ),
  );
 
 
@@ -88,6 +159,23 @@ function show_metaboxes($post, $args){
                 case 'email':
                     $output .= '<label class="customLabel">'.$field['title'].'</label>';
                     $output .= '<input type="email" name="'.$id.'" class="customField" value="'.$customValues[$id][0].'">';
+                break;
+                case 'image':
+                    $image =  get_post_meta( $post->ID, $id, true );
+                    if($image){
+                        $imagesrc = wp_get_attachment_image_url($image, 'header_image', false);
+                        $removeClasses = "remove_custom_images button";
+                    } else{
+                        $removeClasses = "remove_custom_images button hidden";
+                    }
+                    $output .= '<div class="image-form-group">';
+                        $output .= '<label for="'.$id.'" class="customLabel">'.$field['title'].'</label><br>';
+                        $output .= '<p>'.$field['description'].'</p><br>';
+                        $output .= '<img class="custom_image" src="'.$imagesrc.'">';
+                        $output .= '<input type="hidden" value="' . $custom[$id][0] . '" class="customInput regular-text process_custom_images" name="'.$id.'" max="" min="1" step="1" readonly style="display:block">';
+                        $output .= '<button class="set_custom_images button">Add Image</button>';
+                        $output .= '<button class="'.$removeClasses.'">Remove Image</button>';
+                    $output .= '</div>';
                 break;
                 default:
                     $output .= '<label class="customLabel">'.$field['title'].'</label>';
