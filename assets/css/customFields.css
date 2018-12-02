@@ -1,0 +1,25 @@
+.custom_image{
+    width: 50%;
+    display: block;
+}
+
+.pb-10{
+    padding-bottom: 10px;
+}
+
+.image-form-group p{
+    margin: 0;
+}
+
+.hidden{
+    display: none;
+}
+
+button.set_custom_images,
+button.remove_custom_images{
+    display: inline-block;
+}
+
+button.remove_custom_images{
+    margin-left: 12px !important;
+}
