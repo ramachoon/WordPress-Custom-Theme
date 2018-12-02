@@ -38,9 +38,22 @@ function addCustomThemeStyles(){
 add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 
 
-
 function add_admin_custom_styles(){
     wp_enqueue_style('admin-style', get_template_directory_uri() . '/assets/css/admin.css', array(), '0.0.1', 'all');
+    wp_enqueue_script('admin-scripts', get_template_directory_uri() . '/assets/js/admin-scripts.js', array(), '0.0.1', true);
+
+    global $metaboxes;
+
+    $formats = array();
+    foreach ($metaboxes as $id => $metabox) {
+        if($metabox['format_condition']){
+            $formats[$metabox['format_condition']] = $id;
+        }
+    }
+    wp_localize_script('admin-scripts', 'formats', array(
+        'allFormats' => $formats
+    ));
+
 }
 add_action('admin_enqueue_scripts', 'add_admin_custom_styles');
 
